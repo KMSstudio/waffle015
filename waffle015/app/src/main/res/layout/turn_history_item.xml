@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- Describe -->
+    <TextView
+        android:id="@+id/turn_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Turn"
+        android:textSize="16sp" />
+
+    <!-- Current state: use FameLayout for align center -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/board_state_recycler"
+            android:numColumns="3"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+
+    <!-- Return to this turn -->
+    <Button
+        android:id="@+id/revert_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/turn_to_button"
+        android:textColor="#000"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="Go to here" />
+</LinearLayout>
