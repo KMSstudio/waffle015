@@ -34,7 +34,7 @@ class TurnHistoryAdapter(
 
         // 보드 상태를 RecyclerView에 설정
         holder.boardRecyclerView.layoutManager = GridLayoutManager(holder.itemView.context, 3)
-        val boardAdapter = TicTacToeAdapter(turn.board) // 보드 상태를 어댑터에 전달
+        val boardAdapter = TicTacToeAdapter(turn.board)
         holder.boardRecyclerView.adapter = boardAdapter
 
         holder.revertButton.setOnClickListener {

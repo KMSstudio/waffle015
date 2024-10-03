@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
         turnHistoryRecyclerView.layoutManager = LinearLayoutManager(this) // 세로 리스트
         turnHistoryAdapter = TurnHistoryAdapter(turnHistoryViewModel) { turnIndex ->
             // restoreGameState
+            turnHistoryViewModel.revertToTurn(turnIndex)
             val turnState = turnHistoryViewModel.turnHistory.value?.get(turnIndex)
             turnState?.let {
                 viewModel.restoreGameState(it)
