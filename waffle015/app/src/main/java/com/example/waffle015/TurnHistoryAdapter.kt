@@ -46,7 +46,7 @@ class TurnHistoryAdapter(
         return turnHistory.size
     }
 
-    // ViewModel에서 LiveData 업데이트 시 데이터 반영
+    // Update history by newTurnHistory
     fun updateTurnHistory(newTurnHistory: List<TurnState>) {
         turnHistory = newTurnHistory
         notifyDataSetChanged()

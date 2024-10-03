@@ -5,8 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class TicTacToeViewModel : ViewModel() {
-
-    // 게임 판을 저장할 배열
     private val _board = MutableLiveData(Array(3) { Array(3) { "" } })
     val board: LiveData<Array<Array<String>>> = _board
 
@@ -48,12 +46,11 @@ class TicTacToeViewModel : ViewModel() {
     // reset the game
     fun resetBoard() {
         _board.value = Array(3) { Array(3) { "" } } // 빈 보드로 초기화
-        _currentPlayer.value = "O" // 첫 플레이어로 초기화
-        _gameState.value = "In progress" // 게임 상태 초기화
+        _currentPlayer.value = "O"
+        _gameState.value = "In progress"
         winner = null // 승자 초기화
     }
 
-    // 턴 기록을 추가하는 함수
     private fun addTurnToHistory(description: String = "Player ${_currentPlayer.value}'s turn") {
         val currentBoard = _board.value?.map { it.copyOf() }?.toTypedArray() ?: return
         val newTurn = TurnState(currentBoard, _currentPlayer.value ?: "O", description)
@@ -68,7 +65,7 @@ class TicTacToeViewModel : ViewModel() {
         winner = null
     }
 
-    // 승리 체크
+    // Check win
     private fun checkWin(): Boolean {
         val b = _board.value ?: return false
         for (i in 0..2) {
@@ -80,7 +77,7 @@ class TicTacToeViewModel : ViewModel() {
         return false
     }
 
-    // 무승부 체크
+    // Check draw
     private fun checkDraw(): Boolean {
         val b = _board.value ?: return false
         return b.all { row -> row.all { it.isNotEmpty() } }
