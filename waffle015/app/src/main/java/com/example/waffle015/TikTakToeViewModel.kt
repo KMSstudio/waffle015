@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class TicTacToeViewModel : ViewModel() {
-    private val _board = MutableLiveData(Array(3) { Array(3) { "" } })
+    private val _board = MutableLiveData(Array(5) { Array(5) { "" } })
     val board: LiveData<Array<Array<String>>> = _board
 
     private val _currentPlayer = MutableLiveData("O")
@@ -45,7 +45,7 @@ class TicTacToeViewModel : ViewModel() {
 
     // reset the game
     fun resetBoard() {
-        _board.value = Array(3) { Array(3) { "" } } // 빈 보드로 초기화
+        _board.value = Array(5) { Array(5) { "" } } // 빈 보드로 초기화
         _currentPlayer.value = "O"
         _gameState.value = "In progress"
         winner = null // 승자 초기화
@@ -69,11 +69,11 @@ class TicTacToeViewModel : ViewModel() {
     private fun checkWin(): Boolean {
         val b = _board.value ?: return false
         for (i in 0..2) {
-            if (b[i][0] == b[i][1] && b[i][1] == b[i][2] && b[i][0].isNotEmpty()) return true
-            if (b[0][i] == b[1][i] && b[1][i] == b[2][i] && b[0][i].isNotEmpty()) return true
+            if (b[i][0] == b[i][1] && b[i][1] == b[i][2] && b[i][2] == b[i][3] && b[i][3] == b[i][4] && b[i][0].isNotEmpty()) return true
+            if (b[0][i] == b[1][i] && b[1][i] == b[2][i] && b[2][i] == b[3][i] && b[3][i] == b[4][i] && b[0][i].isNotEmpty()) return true
         }
-        if (b[0][0] == b[1][1] && b[1][1] == b[2][2] && b[0][0].isNotEmpty()) return true
-        if (b[0][2] == b[1][1] && b[1][1] == b[2][0] && b[0][2].isNotEmpty()) return true
+        if (b[0][0] == b[1][1] && b[1][1] == b[2][2] && b[2][2] == b[3][3] && b[3][3] == b[4][4] && b[0][0].isNotEmpty()) return true
+        if (b[0][4] == b[1][3] && b[1][3] == b[2][2] && b[2][2] == b[3][1] && b[3][1] == b[4][0] && b[0][4].isNotEmpty()) return true
         return false
     }
 

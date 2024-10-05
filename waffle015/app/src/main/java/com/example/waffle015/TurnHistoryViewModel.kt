@@ -15,7 +15,7 @@ class TurnHistoryViewModel : ViewModel() {
         _turnHistory.value = updatedHistory
     }
 
-    // Revert current turn to index turn (But this fun doesn't used in this program)
+    // Revert current turn to index turn
     fun revertToTurn(turnIndex: Int) {
         val updatedHistory = _turnHistory.value?.subList(0, turnIndex + 1)
         _turnHistory.value = updatedHistory

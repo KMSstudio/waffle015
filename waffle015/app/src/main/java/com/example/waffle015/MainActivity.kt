@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
         // Setup TicTacToe board RecyclerView
         val recyclerView = binding.recyclerView
-        recyclerView.layoutManager = GridLayoutManager(this, 3)
+        recyclerView.layoutManager = GridLayoutManager(this, 5)
         val adapter = TicTacToeAdapter(viewModel=viewModel, history=turnHistoryViewModel) // turnHistoryViewModel 전달
         recyclerView.adapter = adapter
 
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
 
         turnHistoryRecyclerView = binding.turnHistoryRecycler
         turnHistoryRecyclerView.layoutManager = LinearLayoutManager(this) // 세로 리스트
-        turnHistoryAdapter = TurnHistoryAdapter(turnHistoryViewModel) { turnIndex ->
+        turnHistoryAdapter = TurnHistoryAdapter(viewModel = turnHistoryViewModel) { turnIndex ->
             // restoreGameState
             turnHistoryViewModel.revertToTurn(turnIndex)
             val turnState = turnHistoryViewModel.turnHistory.value?.get(turnIndex)

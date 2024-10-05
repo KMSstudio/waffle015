@@ -23,8 +23,8 @@ class TicTacToeAdapter(
     }
 
     override fun onBindViewHolder(holder: TicTacToeViewHolder, position: Int) {
-        val row = position / 3
-        val col = position % 3
+        val row = position / 5
+        val col = position % 5
 
         board?.let {
             val value = it[row][col]
@@ -42,6 +42,6 @@ class TicTacToeAdapter(
     }
 
     override fun getItemCount(): Int {
-        return 9
+        return 25
     }
 }
